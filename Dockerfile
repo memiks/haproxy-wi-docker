@@ -17,7 +17,7 @@ RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm && \
         chmod +x /wrapper.sh && \
         chown -R apache:apache /var/log/httpd/ && \
         yum -y erase git python35u-pip gcc-c++  gcc-gfortran gcc --remove-leaves && \
-        yum -y autoremove yum-plugin-remove-with-leaves && \
+#        yum -y autoremove yum-plugin-remove-with-leaves && \
         yum clean all && \
         rm -rf /var/cache/yum && \
         rm -f /etc/yum.repos.d/* && \
