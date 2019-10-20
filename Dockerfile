@@ -1,13 +1,13 @@
 FROM centos
-MAINTAINER Pavel Loginov (https://github.com/Aidaho12/haproxy-wi)
+MAINTAINER Ruslan Sheremet (https://github.com/sheremet/haproxy-wi)
 
 COPY epel.repo /etc/yum.repos.d/epel.repo
 COPY haproxy-wi.conf /etc/httpd/conf.d/haproxy-wi.conf
 COPY wrapper.sh /wrapper.sh
 
 RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm && \ 
-        yum -y install git nmap-ncat net-tools python35u dos2unix python35u-pip httpd python35u-devel gcc-c++ gcc gcc-gfortran python34-devel yum-plugin-remove-with-leaves openldap-devel && \
-        git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi && \
+        yum -y install git nmap-ncat net-tools python35u dos2unix python35u-pip httpd python35u-devel gcc-c++ gcc gcc-gfortran python34-devel openldap-devel && \
+        git clone https://github.com/sheremet/haproxy-wi.git /var/www/haproxy-wi && \
         mkdir /var/www/haproxy-wi/keys/ && \
         mkdir /var/www/haproxy-wi/app/certs/ && \
         chown -R apache:apache /var/www/haproxy-wi/ && \
@@ -17,11 +17,10 @@ RUN yum -y install https://centos7.iuscommunity.org/ius-release.rpm && \
         chmod +x /wrapper.sh && \
         chown -R apache:apache /var/log/httpd/ && \
         yum -y erase git python35u-pip gcc-c++  gcc-gfortran gcc --remove-leaves && \
-#        yum -y autoremove yum-plugin-remove-with-leaves && \
         yum clean all && \
         rm -rf /var/cache/yum && \
         rm -f /etc/yum.repos.d/* && \
-        cd /var/www/haproxy-wi/app &&\
+        cd /var/www/haproxy-wi/app && \
         ./create_db.py && \
         chown -R apache:apache /var/www/haproxy-wi/  && \
 		rm -f /usr/bin/python3 && \
