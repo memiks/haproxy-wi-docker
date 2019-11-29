@@ -6,7 +6,7 @@ COPY haproxy-wi.conf /etc/httpd/conf.d/haproxy-wi.conf
 COPY wrapper.sh /wrapper.sh
 
 RUN dnf -y install git nmap-ncat net-tools python36 python36-dev dos2unix httpd \
-        gcc-c++ gcc gcc-gfortran platform-python-pip openldap-devel && \
+        gcc-c++ gcc gcc-gfortran openldap-devel && \
         git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi && \
         mkdir /var/www/haproxy-wi/keys/ && \
         mkdir /var/www/haproxy-wi/app/certs/ && \
