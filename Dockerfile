@@ -10,7 +10,6 @@ RUN dnf -y install git nmap-ncat net-tools python36 python36-devel dos2unix http
         
 RUN git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi && \
         mkdir /var/www/haproxy-wi/keys/ && \
-        mkdir /var/www/haproxy-wi/app/certs/ && \
         chown -R apache:apache /var/www/haproxy-wi/
 RUN pip install -r /var/www/haproxy-wi/requirements.txt --no-cache-dir && \
         chmod +x /var/www/haproxy-wi/app/*.py && \
