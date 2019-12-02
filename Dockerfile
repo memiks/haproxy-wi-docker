@@ -5,9 +5,9 @@ COPY epel.repo /etc/yum.repos.d/epel.repo
 COPY haproxy-wi.conf /etc/httpd/conf.d/haproxy-wi.conf
 COPY wrapper.sh /wrapper.sh
 
-RUN dnf -y install git nmap-ncat net-tools python36 python36-devel dos2unix httpd \
+RUN dnf -y install git nmap-ncat net-tools dos2unix httpd \
         gcc-c++ gcc gcc-gfortran openldap-devel
-        
+RUN dnf -y install python36 python36-devel python-pip
 RUN git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi && \
         mkdir /var/www/haproxy-wi/keys/ && \
         chown -R apache:apache /var/www/haproxy-wi/
