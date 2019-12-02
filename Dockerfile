@@ -11,6 +11,7 @@ RUN dnf -y install platform-python platform-python-pip python3-pip
 RUN git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi && \
         mkdir /var/www/haproxy-wi/keys/ && \
         chown -R apache:apache /var/www/haproxy-wi/
+RUN dnf install redhat-rpm-config
 RUN pip3 install -r /var/www/haproxy-wi/requirements.txt --no-cache-dir && \
         chmod +x /var/www/haproxy-wi/app/*.py && \
         chmod +x /var/www/haproxy-wi/app/tools/*.py && \
