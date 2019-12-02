@@ -9,7 +9,7 @@ RUN dnf -y install git nmap-ncat net-tools dos2unix httpd \
         gcc-c++ gcc gcc-gfortran openldap-devel
 RUN dnf -y install platform-python platform-python-pip
 #RUN ln -s /usr/lib/python3.6/site-packages/pip /usr/bin/
-RUN expot PATH="/usr/lib/python3.6/site-packages/:${PATH}"
+RUN export PATH="/usr/lib/python3.6/site-packages/:${PATH}"
 RUN git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi && \
         mkdir /var/www/haproxy-wi/keys/ && \
         chown -R apache:apache /var/www/haproxy-wi/
