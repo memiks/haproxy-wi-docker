@@ -10,6 +10,8 @@ RUN dnf -y install git nmap-ncat net-tools dos2unix httpd \
 RUN dnf -y install platform-python platform-python-pip python3-pip
 RUN git clone https://github.com/Aidaho12/haproxy-wi.git /var/www/haproxy-wi && \
         mkdir /var/www/haproxy-wi/keys/ && \
+        mkdir -p /var/www/haproxy-wi/configs/hap_config/ && \
+        mkdir -p /var/www/haproxy-wi/configs/kp_config/ && \
         chown -R apache:apache /var/www/haproxy-wi/
 RUN dnf -y install platform-python-devel redhat-rpm-config
 RUN pip3 install -r /var/www/haproxy-wi/requirements.txt --no-cache-dir && \
