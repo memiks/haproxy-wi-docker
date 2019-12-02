@@ -17,9 +17,9 @@ RUN pip3 install -r /var/www/haproxy-wi/requirements.txt --no-cache-dir && \
         chmod +x /var/www/haproxy-wi/app/tools/*.py && \
         chmod +x /wrapper.sh && \
         chown -R apache:apache /var/log/httpd/
-RUN dnf -y remove --skip-broken git platform-python-pip python3-pip \
-        platform-python-devel redhat-rpm-config gcc-c++ gcc-gfortran gcc
-RUN dnf clean all
+RUN dnf -y remove --skip-broken git python3-pip platform-python-devel \
+        redhat-rpm-config gcc-c++ gcc-gfortran gcc && \
+        dnf clean all
 RUN rm -rf /var/cache/dnf && \
         rm -f /etc/yum.repos.d/*
 RUN cd /var/www/haproxy-wi/app && \
